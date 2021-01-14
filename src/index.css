@@ -12,7 +12,7 @@ body {
 }
 
 body {
-  background-color: #7cc6fe;
+  background-color: gold;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,4 +105,9 @@ button:focus {
 
 button svg {
   margin-right: 5px;
+}
+
+img {
+  width: 50%;
+  margin-left: 35px;
 }

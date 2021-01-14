@@ -49,14 +49,14 @@ export const currentUser = {
 }
 
 export const studentData = [
+
   {
-  sid: 1,
-  name: "Chris Chi",
-  img: require('./Photos/chris.png'),
-  pronouns: "she/her/hers",
-  seatId: ["250px", "250px"],
-  occupied: true,
-  blocked: true
+  sid: 10,
+  name: "Siddhant Sharma",
+  img: require('./Photos/test.jpg'),
+  pronouns: "he/his/him",
+  seatId: ["100px", "50px"],
+  occupied: true
   },
 
   {
@@ -70,16 +70,7 @@ export const studentData = [
   },
 
 
-  {
-  sid: 3,
-  name: "Agam Jolly",
-  img: require("./Photos/agam.png"),
-  pronouns: "she/her/hers",
-  seatId: ["700px", "250px"],
-  occupied: true,
-  blocked: true
 
-  },
 
 
 
@@ -159,14 +150,26 @@ export const studentData = [
 
 
 
-  {
-  sid: 10,
-  name: "Siddhant Sharma",
-  img: require('./Photos/test.jpg'),
-  pronouns: "he/his/him",
-  seatId: ["100px", "50px"],
-  occupied: true
-  }
+
+{
+sid: 1,
+name: "Chris Chi",
+img: require('./Photos/chris.png'),
+pronouns: "she/her/hers",
+seatId: ["250px", "250px"],
+occupied: true,
+blocked: true
+},
+{
+sid: 3,
+name: "Agam Jolly",
+img: require("./Photos/agam.png"),
+pronouns: "she/her/hers",
+seatId: ["700px", "250px"],
+occupied: true,
+blocked: true
+
+}
 
 ];
 // SID is a primary key and index into list with sid to get student info

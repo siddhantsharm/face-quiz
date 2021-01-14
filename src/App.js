@@ -75,6 +75,10 @@ export default function App() {
 
 	questions[0].answerOptions.sort((a, b) => (a.answerText > b.answerText) ? 1 : -1);
 	return (
+
+		
+
+
 		<div className='app'>
 			{showScore ? (
 				<div className='score-section'>
@@ -87,7 +91,7 @@ export default function App() {
 							<span>Question {currentQuestion + 1}</span>/{studentData.length}
 						</div>
 						<div >
-						<img src={img} style={{width:"50%"}} />
+						<img src={img}  />
 						</div>
 					</div>
 					<div className='answer-section'>
