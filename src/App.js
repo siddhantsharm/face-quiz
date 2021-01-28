@@ -2,56 +2,25 @@ import React, { useState } from 'react';
 import {classData, studentData, currentUser} from './data.js'; // import hardcoded data
 
 export default function App() {
-	/* const questions = [
-		{
-			questionText: 'What is the capital of France?',
-			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Who is CEO of Tesla?',
-			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'The iPhone was created by which company?',
-			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'How many Harry Potter books are there?',
-			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
-			],
-		},
-	]; */
 
+	// Set the first question to the first student in your database.
 	const [currentQuestion, setCurrentQuestion] = useState(0);
+	//showScore --> Shows the overall score if value is true.
 	const [showScore, setShowScore] = useState(false);
+	// score --> Increments by 1 for every correct answer and tracks score.
 	const [score, setScore] = useState(0);
+	// img --> Fetches the image of the currenQuestion student.
 	const [img, setImg] = useState(studentData[0].img.default);
 
+	/* logic for a correct answer. If answer is correct increment score by 1 and present
+	the next student or total score if all students have be presented already. */
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
 		}
-
+		//Change to the next question.
 		const nextQuestion = currentQuestion + 1;
+		//If it's the last question, set schowScore to true as the quiz has ended, otherwise show the next student.
 		if (nextQuestion < studentData.length) {
 			setCurrentQuestion(nextQuestion);
 			setImg(studentData[nextQuestion].img.default);
@@ -59,11 +28,15 @@ export default function App() {
 			setShowScore(true);
 		}
 	};
+
+	// random name variable.
 	let random = currentQuestion;
 	if(studentData.length - currentQuestion < 4 ){
 		random = studentData.length - currentQuestion;
 	}
 
+	/* Gets random names from the database. Currently accesses the next four names in the database
+	 or the previous four depending on index of the currentQuestion. Only the correct name has isCorrect value true. */
 	const questions = [{
 		answerOptions: [
 			{ answerText: studentData[currentQuestion].name, isCorrect: true },
@@ -73,17 +46,20 @@ export default function App() {
 		],
 	}]
 
+	// Sort all the answerOptions in alphabetical order so there is no apparent pattern to all the options.
 	questions[0].answerOptions.sort((a, b) => (a.answerText > b.answerText) ? 1 : -1);
 	return (
 
-		
+
 
 
 		<div className='app'>
+		// If showScore is true display the total score.
 			{showScore ? (
 				<div className='score-section'>
 					You scored {score} out of {studentData.length}
 				</div>
+		// Else iterate through all the students in the database.
 			) : (
 				<>
 					<div className='question-section'>
